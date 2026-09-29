@@ -1,0 +1,15 @@
+from functools import reduce
+
+scores = [45, 82, 58, 90, 67, 30, 75, 95]
+
+passing_scores = list(filter(lambda score: score >= 60, scores))
+
+boosted_scores = list(map(lambda score: score + 5, passing_scores))
+
+total_score = reduce(lambda acc, curr: acc + curr, boosted_scores, 0)
+
+average_score = total_score / len(boosted_scores)
+
+print("O'tgan ballar:", passing_scores)
+print("Bonus qo'shilgan ballar:", boosted_scores)
+print("O'rtacha ball:", average_score)

@@ -1,0 +1,39 @@
+def calculate_average(scores: list[float]) -> float:
+   
+    if not scores:
+        return 0.0
+    return sum(scores) / len(scores)
+
+def get_highest_and_lowest(scores: list[float]) -> tuple[float, float]:
+    
+    if not scores:
+        return 0.0, 0.0
+    return max(scores), min(scores)
+
+def get_performance_status(average_score: float) -> str:
+    
+    if average_score >= 85:
+        return "A'lo (Excellent)"
+    elif average_score >= 70:
+        return "Yaxshi (Good)"
+    elif average_score >= 60:
+        return "Qoniqarli (Satisfactory)"
+    else:
+        return "Qoniqarsiz (Unsatisfactory)"
+
+def generate_grade_report(student_name: str, scores: list[float]):
+    
+    avg = calculate_average(scores)
+    highest, lowest = get_highest_and_lowest(scores)
+    status = get_performance_status(avg)
+
+    print(f"--- {student_name} uchun statistik hisobot ---")
+    print(f"Kiritilgan baholar: {scores}")
+    print(f"O'rtacha ball: {avg:.2f}")
+    print(f"Eng yuqori ball: {highest}")
+    print(f"Eng past ball: {lowest}")
+    print(f"Umumiy holat: {status}\n")
+
+if __name__ == "__main__":
+    student_scores = [90.5, 88.0, 76.5, 95.0, 82.0]
+    generate_grade_report("Mehroj", student_scores)

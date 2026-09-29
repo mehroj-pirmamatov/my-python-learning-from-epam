@@ -1,0 +1,19 @@
+from functools import reduce
+
+products = [
+    {"name": "Monitor", "price": 250},
+    {"name": "Mouse", "price": 25},
+    {"name": "Keyboard", "price": 85},
+    {"name": "Headphones", "price": 120},
+    {"name": "Webcam", "price": 150}
+]
+
+expensive_products = list(filter(lambda p: p["price"] > 100, products))
+
+discounted_prices = list(map(lambda p: p["price"] * 0.9, expensive_products))
+
+total_checkout_price = reduce(lambda total, price: total + price, discounted_prices, 0)
+
+print("Saralangan mahsulotlar:", expensive_products)
+print("Chegirmali narxlar:", discounted_prices)
+print("Jami to'lanadigan summa:", total_checkout_price)

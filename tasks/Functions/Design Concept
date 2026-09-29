@@ -1,0 +1,44 @@
+import math
+
+def calculate_square(a: float) -> tuple[float, float]:
+    """Kvadratning yuzasi va perimetrini hisoblaydi."""
+    area = a ** 2
+    perimeter = 4 * a
+    return area, perimeter
+
+def calculate_rectangle(a: float, b: float) -> tuple[float, float]:
+    """To'g'ri to'rtburchakning yuzasi va perimetrini hisoblaydi."""
+    area = a * b
+    perimeter = 2 * (a + b)
+    return area, perimeter
+
+def calculate_circle(radius: float) -> tuple[float, float]:
+    """Doiraning yuzasi va uzunligini (perimetrini) hisoblaydi."""
+    area = math.pi * (radius ** 2)
+    perimeter = 2 * math.pi * radius
+    return area, perimeter
+
+def process_shape_calculation():
+    """Foydalanuvchidan ma'lumot oluvchi va hisoblovchi asosiy funksiya."""
+    shape = input("Shakl turini kiriting (square, rectangle, circle): ").strip().lower()
+
+    if shape == "square":
+        side = float(input("Kvadrat tomonini kiriting: "))
+        area, perimeter = calculate_square(side)
+    elif shape == "rectangle":
+        a = float(input("1-tomonni kiriting: "))
+        b = float(input("2-tomonni kiriting: "))
+        area, perimeter = calculate_rectangle(a, b)
+    elif shape == "circle":
+        r = float(input("Radiusni kiriting: "))
+        area, perimeter = calculate_circle(r)
+    else:
+        print("Xatolik: Noma'lum shakl kiritildi!")
+        return
+
+    print(f"\nNatija ({shape.capitalize()}):")
+    print(f"- Yuza (Area): {area:.2f}")
+    print(f"- Perimetr: {perimeter:.2f}")
+
+if __name__ == "__main__":
+    process_shape_calculation()

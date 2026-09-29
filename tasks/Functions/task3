@@ -1,0 +1,16 @@
+day1 = {
+    'apple': 10,
+    'banana': 5
+}
+
+day2 = {
+    'apple': 7,
+    'orange': 8
+}
+
+day3 = {
+    'banana': 3,
+    'apple': 5
+}
+
+print(calculate_sales(day1, day2, day3))
