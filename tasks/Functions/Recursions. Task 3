@@ -1,0 +1,10 @@
+def linear_seq(sequence):
+    result = []
+
+    for item in sequence:
+        if isinstance(item, (list, tuple)):
+            result.extend(linear_seq(item))
+        else:
+            result.append(item)
+
+    return result
