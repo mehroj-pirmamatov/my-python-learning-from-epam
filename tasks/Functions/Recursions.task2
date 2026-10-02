@@ -1,0 +1,41 @@
+def find_path_in_maze(maze: list, start: tuple, end: tuple) -> list:
+    rows, cols = len(maze), len(maze[0])
+    visited = set()
+
+    def backtrack(r: int, c: int, current_path: list):
+        if r < 0 or r >= rows or c < 0 or c >= cols:
+            return None
+        if maze[r][c] == 1 or (r, c) in visited:
+            return None
+
+        current_path.append((r, c))
+        visited.add((r, c))
+
+        if (r, c) == end:
+            return list(current_path)
+
+        directions = [(0, 1), (1, 0), (0, -1), (-1, 0)]
+        for dr, dc in directions:
+            result = backtrack(r + dr, c + dc, current_path)
+            if result:
+                return result
+
+        current_path.pop()
+        return None
+
+    return backtrack(start[0], start[1], [])
+
+
+maze_grid = [
+    [0, 1, 0, 0, 0],
+    [0, 1, 0, 1, 0],
+    [0, 0, 0, 1, 0],
+    [1, 1, 0, 0, 0],
+    [0, 0, 0, 1, 0]
+]
+
+start_pos = (0, 0)
+end_pos = (4, 4)
+
+path = find_path_in_maze(maze_grid, start_pos, end_pos)
+print(path)
