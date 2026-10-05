@@ -1,0 +1,28 @@
+bank_balance = 10000
+
+
+def deposit(amount):
+    global bank_balance
+
+    bank_balance += amount
+    print(f"Deposited: ${amount}")
+    print(f"Current balance: ${bank_balance}")
+
+
+def withdraw(amount):
+    global bank_balance
+
+    if amount <= bank_balance:
+        bank_balance -= amount
+        print(f"Withdrawn: ${amount}")
+        print(f"Current balance: ${bank_balance}")
+    else:
+        print("Insufficient balance")
+
+
+print(f"Initial balance: ${bank_balance}")
+
+deposit(2500)
+withdraw(3000)
+
+print(f"Final balance: ${bank_balance}")
