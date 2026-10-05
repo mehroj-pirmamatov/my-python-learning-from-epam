@@ -1,0 +1,26 @@
+bank_name = "National Bank"
+total_accounts = 0
+
+
+def create_account(customer_name, initial_balance):
+    global total_accounts
+
+    account = {
+        "customer": customer_name,
+        "balance": initial_balance,
+        "bank": bank_name
+    }
+
+    total_accounts += 1
+
+    print(f"Account created for {customer_name}")
+    return account
+
+
+account_1 = create_account("Ali", 1500)
+account_2 = create_account("Vali", 2500)
+
+print(account_1)
+print(account_2)
+print("Total accounts:", total_accounts)
+print("Bank:", bank_name)
