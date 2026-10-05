@@ -1,0 +1,19 @@
+shop_name = "Tech Store"
+discount = 10
+
+
+def calculate_price(price):
+    final_price = price - (price * discount / 100)
+
+    print(f"Shop: {shop_name}")
+    print(f"Original price: ${price}")
+    print(f"Discount: {discount}%")
+    print(f"Final price: ${final_price}")
+
+    return final_price
+
+
+calculate_price(1000)
+
+print(f"\nShop name: {shop_name}")
+print(f"Discount: {discount}%")
