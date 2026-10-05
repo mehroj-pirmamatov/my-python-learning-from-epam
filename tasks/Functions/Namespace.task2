@@ -1,0 +1,26 @@
+shop_name = "Tech Store"
+currency = "USD"
+
+
+def create_product(name, price, category):
+    product = {
+        "name": name,
+        "price": price,
+        "category": category,
+        "currency": currency
+    }
+
+    print("Local variables:")
+    print(locals())
+
+    print("\nShop information:")
+    print(globals()["shop_name"])
+    print(globals()["currency"])
+
+    return product
+
+
+product = create_product("Laptop", 850, "Electronics")
+
+print("\nProduct:")
+print(product)
