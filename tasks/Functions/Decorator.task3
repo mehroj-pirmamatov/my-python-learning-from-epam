@@ -1,0 +1,25 @@
+from functools import wraps
+
+
+def validate(func):
+    """Validate arguments of the decorated function."""
+
+    @wraps(func)
+    def wrapper(*args, **kwargs):
+        all_arguments = list(args) + list(kwargs.values())
+
+        if all(
+            isinstance(value, int) and 0 <= value <= 256
+            for value in all_arguments
+        ):
+            return func(*args, **kwargs)
+
+        return "Function call is not valid!"
+
+    return wrapper
+
+
+@validate
+def set_pixel(x, y, z):
+    """Create a pixel if all coordinates are valid."""
+    return "Pixel created!"
