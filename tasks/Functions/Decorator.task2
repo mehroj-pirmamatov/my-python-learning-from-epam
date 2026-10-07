@@ -1,0 +1,40 @@
+from time import perf_counter
+
+
+def log(func):
+    def wrapper(*args, **kwargs):
+        start_time = perf_counter()
+
+        result = func(*args, **kwargs)
+
+        execution_time = perf_counter() - start_time
+
+        args_text = ", ".join(
+            f"{name}={value}"
+            for name, value in zip(func.__code__.co_varnames, args)
+        )
+
+        kwargs_text = ", ".join(
+            f"{name}={value}"
+            for name, value in kwargs.items()
+        )
+
+        with open("log.txt", "a") as file:
+            file.write(
+                f"{func.__name__}; "
+                f"args: {args_text}; "
+                f"kwargs: {kwargs_text}; "
+                f"execution time: {execution_time:.2f} sec.\n"
+            )
+
+        return result
+
+    return wrapper
+
+
+@log
+def foo(a, b, c):
+    return a + b + c
+
+
+foo(1, 2, c=3)
