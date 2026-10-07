@@ -1,0 +1,25 @@
+from time import perf_counter
+
+execution_time = {}
+
+
+def time_decorator(func):
+    def wrapper(*args, **kwargs):
+        start_time = perf_counter()
+
+        result = func(*args, **kwargs)
+
+        end_time = perf_counter()
+
+        execution_time[func.__name__] = end_time - start_time
+
+        return result
+
+    return wrapper
+
+
+@time_decorator
+def func_add(a, b):
+    from time import sleep
+    sleep(0.2)
+    return a + b
