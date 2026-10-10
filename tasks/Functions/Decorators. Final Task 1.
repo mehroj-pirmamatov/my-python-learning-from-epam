@@ -1,0 +1,54 @@
+
+def split(data: str, sep=None, maxsplit=-1):
+    result = []
+
+    if sep is None:
+        words = []
+        word = ""
+
+        for char in data:
+            if char.isspace():
+                if word:
+                    words.append(word)
+                    word = ""
+            else:
+                word += char
+
+        if word:
+            words.append(word)
+
+        if maxsplit == -1:
+            return words
+
+        result = []
+        current = ""
+        splits = 0
+
+        for char in data:
+            if char.isspace() and splits < maxsplit:
+                if current:
+                    result.append(current)
+                    current = ""
+                    splits += 1
+            else:
+                current += char
+
+        if current.strip():
+            result.append(current.strip())
+
+        return result
+
+    if sep == "":
+        raise ValueError("empty separator")
+
+    start = 0
+    splits = 0
+
+    for i in range(len(data)):
+        if data.startswith(sep, i) and splits != maxsplit:
+            result.append(data[start:i])
+            start = i + len(sep)
+            splits += 1
+
+    result.append(data[start:])
+    return result
