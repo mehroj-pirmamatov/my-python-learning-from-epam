@@ -1,0 +1,17 @@
+
+from typing import List
+
+
+def split_by_index(s: str, indexes: List[int]) -> List[str]:
+    valid_indexes = sorted(set(i for i in indexes if 0 < i < len(s)))
+
+    result = []
+    start = 0
+
+    for index in valid_indexes:
+        result.append(s[start:index])
+        start = index
+
+    result.append(s[start:])
+
+    return result
