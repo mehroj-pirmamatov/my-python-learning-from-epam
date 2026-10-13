@@ -1,0 +1,13 @@
+import converter
+
+
+def main():
+    temperature = float(input("Enter temperature in Celsius: "))
+
+    result = converter.celsius_to_fahrenheit(temperature)
+
+    print(f"Fahrenheit: {result:.2f}")
+
+
+if __name__ == "__main__":
+    main()
