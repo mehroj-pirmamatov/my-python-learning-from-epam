@@ -1,0 +1,21 @@
+```python
+def create_user_profile(username, role="user", is_active=True):
+    """Create and return a user profile."""
+    if not username.strip():
+        raise ValueError("Username cannot be empty.")
+
+    return {
+        "username": username,
+        "role": role,
+        "is_active": is_active,
+    }
+
+
+user1 = create_user_profile("ali")
+user2 = create_user_profile("sardor", role="admin")
+user3 = create_user_profile("malika", role="editor", is_active=False)
+
+print(user1)
+print(user2)
+print(user3)
+```
