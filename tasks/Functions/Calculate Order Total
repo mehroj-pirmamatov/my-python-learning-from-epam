@@ -1,0 +1,25 @@
+
+def calculate_order_total(*prices, discount=0):
+    """
+    Calculate the total price of an order with an optional discount.
+    """
+    if not prices:
+        return 0
+
+    if any(price < 0 for price in prices):
+        raise ValueError("Prices cannot be negative.")
+
+    if not 0 <= discount <= 100:
+        raise ValueError("Discount must be between 0 and 100.")
+
+    subtotal = sum(prices)
+    total = subtotal - (subtotal * discount / 100)
+
+    return round(total, 2)
+
+
+order_total = calculate_order_total(120, 250, 80, discount=10)
+print(f"Order total: ${order_total:.2f}")
+
+another_order = calculate_order_total(500, 300, discount=15)
+print(f"Another order: ${another_order:.2f}")
