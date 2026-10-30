@@ -1,0 +1,43 @@
+from abc import ABC, abstractmethod
+
+
+class Vehicle(ABC):
+    def __init__(self, brand_name, year_of_issue, base_price, mileage):
+        self.brand_name = brand_name
+        self.year_of_issue = year_of_issue
+        self.base_price = base_price
+        self.mileage = mileage
+
+    def vehicle_type(self):
+        return f"{self.brand_name} {self.__class__.__name__}"
+
+    def is_motorcycle(self):
+        return self.number_of_wheels() == 2
+
+    @property
+    def purchase_price(self):
+        return max(self.base_price - 0.1 * self.mileage, 100_000)
+
+    @abstractmethod
+    def number_of_wheels(self):
+        pass
+
+
+class Car(Vehicle):
+    def number_of_wheels(self):
+        return 4
+
+
+class Motorcycle(Vehicle):
+    def number_of_wheels(self):
+        return 2
+
+
+class Truck(Vehicle):
+    def number_of_wheels(self):
+        return 6
+
+
+class Bus(Vehicle):
+    def number_of_wheels(self):
+        return 6
